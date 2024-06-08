@@ -7,11 +7,12 @@ import {
   VStack,
   Text,
   Image,
-  Grid, GridItem
+  Grid, GridItem, ListItem, UnorderedList
 } from '@chakra-ui/react';
-import { Avatar, AvatarGroup } from '@chakra-ui/react'
 import { Link, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
 import { FaGithub, FaFilePdf, FaExternalLinkAlt } from 'react-icons/fa';
+import 'katex/dist/katex.min.css';
+import Latex from 'react-latex-next';
 
 import AuthorName from './components/AuthorName'; 
 import Affiliation from './components/Affiliation';
@@ -19,44 +20,30 @@ import FadingSeparator from './components/FadingSeperator';
 import CenteredTitle from './components/CenteredTitle';
 import ScientificParagraph from './components/ScientificParagraph'
 
-// const authors = [
-//   { name: "Hossein Mirzaei", index: "1", span: { base: 1, md: 1, lg: 1 } },
-//   { name: "Mohammad Jafari", index: "1", span: { base: 1, md: 2, lg: 1 } },
-//   { name: "Hamidreza Dehbashi", index: "1", span: { base: 1, md: 1, lg: 1 } },
-//   { name: "Ali Anasari", index: "1", span: { base: 1, md: 1, lg: 1 } },
-//   { name: "Sepehr Ghobadi", index: "1", span: { base: 1, md: 1, lg: 1 } },
-//   { name: "Masoud Hadi", index: "2", span: { base: 1, md: 2, lg: 1 } },
-//   { name: "Arshia Soltani", index: "1", span: { base: 1, md: 1, lg: 1 } },
-//   { name: "Mohammad Azizmalayeri", index: "1", span: { base: 1, md: 1, lg: 1 } },
-//   { name: "Mahdieh Soleymani Baghshah", index: "1", span: { base: 2, md: 2, lg: 2 } },
-//   { name: "Mohammad Hossein Rohban", index: "1", span: { base: 2, md: 2, lg: 2 } }
-// ];
-
 const authors = [
-  { name: "H. Mirzaei", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "M. Jafari", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "H. Dehbashi", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "A. Anasari", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "S. Ghobadi", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "M. Hadi", index: "2", span: { base: 1, md: 1, lg: 1 } },
-  { name: "A. Soltani", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "M. Azizmalayeri", index: "1", span: { base: 1, md: 1, lg: 1 } },
-  { name: "M. Soleymani", index: "1", span: { base: 2, md: 2, lg: 2 } },
-  { name: "MH. Rohban", index: "1", span: { base: 2, md: 2, lg: 2 } }
+  { name: "Mohammad Jafari", index: "1", span: { base: 1, md: 1, lg: 1 } },
+  { name: "Yimeng Zhang", index: "2", span: { base: 1, md: 1, lg: 1 } },
+  { name: "Yihua Zhang ", index: "2", span: { base: 1, md: 1, lg: 1 } },
+  { name: "Sijia Liu", index: "2", span: { base: 1, md: 1, lg: 1 } },
 ];
 
 const affiliations = [
   {name: "Sharif University of Technology", index: "1"},
-  {name: "Isfahan University of Technology", index: "2"}
+  {name: "Michigan State University", index: "2"}
 ]
 const App: React.FC = () => {
   return (
     <Flex mt={10} justify="center" minHeight="100vh" width="100%"> {/* Ensures that the content is centered in the viewport */}
       <Container maxW={{base:"95%", md:"80%", lg:"70%"}} bgColor="white">
         <VStack spacing={4} alignItems="center">
-          <Heading as="h1" fontFamily="Times New Roman" size="xl" textAlign="center">
-            RODEO: Robust Outlier Detection via Exposing Adaptive Outliers
-          </Heading>
+          <Box textAlign="center" p={6}>
+            <Heading as="h1" size="xl" fontFamily="Times New Roman">
+              The Power of Few: 
+            </Heading>
+            <Heading as="h1" size="xl" fontFamily="Times New Roman">
+              Accelerating and Enhancing Data Reweighting with Coreset Selection
+            </Heading>
+          </Box>
           <FadingSeparator/>
           <Grid
             templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}
@@ -92,26 +79,26 @@ const App: React.FC = () => {
             ))}
           </Grid>
           <Heading as="h2" mt={4} fontFamily="Times New Roman" size="md" textAlign="center">
-            ICML 2024 (Poster)
+            ICASSP 2024 (Poster)
           </Heading>
           <Grid
             templateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(3, 1fr)']}
             gap={{ base: "5", md: "30" }}
             mt={2}
           >
-            <Link href="https://github.com" isExternal>
+            <Link href="https://github.com/Mohammadjafari80/CW-ERM" isExternal>
               <Tag size="lg" colorScheme="blue" borderRadius="full">
                 <TagLeftIcon boxSize="16px" as={FaGithub} />
                 <TagLabel>Code</TagLabel>
               </Tag>
             </Link>
-            <Link href="https://example.com/poster.pdf" isExternal>
+            <Link href="ICASSP-POSTER-vertical-final.png" isExternal>
               <Tag size="lg" colorScheme="green" borderRadius="full">
                 <TagLeftIcon boxSize="16px" as={FaFilePdf} />
                 <TagLabel>Poster</TagLabel>
               </Tag>
             </Link>
-            <Link href="https://arxiv.org" isExternal>
+            <Link href="https://arxiv.org/abs/2403.12166" isExternal>
               <Tag size="lg" colorScheme="red" borderRadius="full">
                 <TagLeftIcon boxSize="16px" as={FaExternalLinkAlt} />
                 <TagLabel>ArXiv</TagLabel>
@@ -122,43 +109,112 @@ const App: React.FC = () => {
           <Image
               rounded={'lg'}
               // height={'100%'}  // Set the height to be 100% of the inner Flex
-              width={'80%'}   // Set the width to be 100% of the inner Flex
+              width={'60%'}   // Set the width to be 100% of the inner Flex
               objectFit={'cover'}  // This will ensure the image covers the area without distortion
-              src={'fig-samples-icml.png'}
+              src={'hpo-method.png'}
               alt={'Methodology'}
               />
           <FadingSeparator/>
           <CenteredTitle title='Abstract'/>
           <ScientificParagraph>
-          In recent years, there have been significant improvements in various forms of image outlier detection. However, outlier detection performance under adversarial settings lags far behind that in standard settings. This is due to the lack of effective exposure to adversarial scenarios during training, especially on unseen outliers, leading to detection models failing to learn robust features. To bridge this gap, we introduce RODEO, a data-centric approach that generates effective outliers for robust outlier detection. More specifically, we show that incorporating outlier exposure (OE) and adversarial training could be an effective strategy for this purpose, as long as the exposed training outliers meet certain characteristics, including diversity, and both conceptual differentiability and analogy to the inlier samples. We leverage a text-to-image model to achieve this goal. We demonstrate both quantitatively and qualitatively that our adaptive OE method effectively generates ``diverse'' and ``near-distribution'' outliers, leveraging information from both text and image domains. Moreover, our experimental results show that utilizing our synthesized outliers significantly enhances the performance of the outlier detector, particularly in adversarial settings.  
+          As machine learning tasks continue to evolve, the trend has been to gather larger datasets and train increasingly larger models. While this has led to advancements in accuracy, it has also escalated computational costs to unsustainable levels. Addressing this, our work aims to strike a delicate balance between computational efficiency and model accuracy, a persisting challenge in the field. We introduce a novel method that employs core subset selection for reweighting, effectively optimizing both computational time and model performance. By focusing on a strategically selected coreset, our approach offers a robust representation, as it efficiently minimizes the influence of outliers. The re-calibrated weights are then mapped back to and propagated across the entire dataset. Our experimental results substantiate the effectiveness of this approach, underscoring its potential as a scalable and precise solution for model training.  
           </ScientificParagraph>
           <FadingSeparator/>
           <CenteredTitle title='Problem'/>
-          <Image
-              rounded={'lg'}
-              // height={'100%'}  // Set the height to be 100% of the inner Flex
-              width={{base:'80%', md:'80%', lg:'40%'}}   // Set the width to be 100% of the inner Flex
-              objectFit={'cover'}  // This will ensure the image covers the area without distortion
-              src={'fig-1-icml.png'}
-              alt={'problem'}
-              />
+
           <ScientificParagraph>
-            In this study, we experimentally observe that the OE technique performance is highly sensitive to the distance between the exposed outliers and the inlier training set distribution. Our result suggests that a near-distribution OE set is significantly more beneficial than a distant one. By near-distribution outliers, we refer to image data that possesses semantically and stylistically related characteristics to those of the inlier dataset. 
+            <VStack spacing={6} align="start">
+              <Box>
+                <Text mt="2">
+                 <Text fontSize="2xl" fontWeight="bold" as="span" mr={2}>
+                    Coreset Selection: 
+                  </Text>
+                  Improves computational efficiency by focusing on the most representative data{' '}
+                  <Text as="span" fontWeight="bold">
+                    but may miss nuanced diversity.
+                  </Text>
+                </Text>
+              </Box>
+              <Box>
+                <Text mt="2">
+                  <Text fontSize="2xl" fontWeight="bold" as="span" mr={2}>
+                    Data Reweighting: 
+                  </Text>
+                  Aims at better generalization and faster convergence{' '}
+                  <Text as="span" fontWeight="bold">
+                    but is computationally intensive on large datasets.
+                  </Text>
+                </Text>
+              </Box>
+            </VStack>
           </ScientificParagraph>
           <FadingSeparator/>
           <CenteredTitle title='Method'/>
           <Image
               rounded={'lg'}
               // height={'100%'}  // Set the height to be 100% of the inner Flex
-              width={'80%'}   // Set the width to be 100% of the inner Flex
+              width={'60%'}   // Set the width to be 100% of the inner Flex
               objectFit={'cover'}  // This will ensure the image covers the area without distortion
-              src={'rodeo-website.png'}
+              src={'method-hpo.gif'}
               alt={'Methodology'}
               />
-            <ScientificParagraph>
+            {/* <ScientificParagraph>
             To develop a robust outlier detection model, the Outlier Exposure (OE) technique appears to be crucial; otherwise, the model would lack information about the adversarial patterns in the outlier data. However, the Baseline OE technique, which involves leveraging outliers from a presumed dataset, leads to unsatisfactory results in situations where the auxiliary exposed outliers deviate significantly from the in-distribution. Motivated by these factors, we aim to propose an adaptive OE technique that attempts to generate diverse and near-distribution outliers, which can act as a proxy for the real inference-time outliers. The subsequent sections will provide a detailed description of the primary stages of our methodology. 
-            </ScientificParagraph>
-             <FadingSeparator/>
+            </ScientificParagraph> */}
+
+          <ScientificParagraph>
+              Our research methodology integrates three essential components: <strong>coreset selection</strong>, <strong>coreset reweighting</strong>, and <strong>broadcasting of recalibrated weights</strong> to the full dataset. We begin with selecting a representative subset of the original dataset, known as the coreset, to focus the intensive reweighting process. The coreset's weights are then fine-tuned and broadcast back to the entire dataset, achieving a globally effective reweighting. This unified process, termed <em>Coreset Reweighting for ERM (CW-ERM)</em>, balances computational efficiency with model performance, streamlining the path from data selection to final model training.
+          </ScientificParagraph>
+          <FadingSeparator/>
+          <CenteredTitle title='Contributions'/>
+          <Box p={6} width="80%">
+            <VStack spacing={6} align="start">
+              <UnorderedList spacing={4} styleType="none">
+                <ListItem>
+                  <Text fontSize="xl" fontFamily="Times New Roman" css={{ textAlign: 'justify' }}>
+                    {'\u2780 (Methodology-wise)'} We propose a new framework that integrates coreset selection and data reweighting, striking a balance between training efficiency and model efficacy.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text fontSize="xl" fontFamily="Times New Roman" css={{ textAlign: 'justify' }}>
+                    {'\u2781 (Efficiency-wise)'} We unveil that less than $1\%$ of the dataset is sufficient for effective reweighting, dramatically increasing the efficiency of the process.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text fontSize="xl" fontFamily="Times New Roman" css={{ textAlign: 'justify' }}>
+                    {'\u2782 (Performance-wise)'} We empirically validate our approach through comprehensive experiments on the <Text as="i">CIFAR-10</Text> and <Text as="i">CIFAR-100</Text> datasets, showing that our method maintains competitive levels of accuracy.
+                  </Text>
+                </ListItem>
+              </UnorderedList>
+            </VStack>
+          </Box>
+        <FadingSeparator/>
+          <CenteredTitle title='Formulation'/>
+          <Box p={4} borderRadius="md" width="70%">
+            <VStack spacing={6} align="center">
+              <Box textAlign="center">
+                <Text fontSize="xl" fontWeight="bold" mb={2}>ERM</Text>
+                <Latex>{`$$\\min_{\\theta} \\frac{1}{n} \\sum_{i=1}^{n} \\mathcal{L}(f(x_i; \\theta), y_i)$$`}</Latex>
+              </Box>
+              <Box textAlign="center">
+                <Text fontSize="xl" fontWeight="bold" mb={2}>Weighted-ERM (W-ERM)</Text>
+                <Latex >{`$$w = \\text{DataReweighting}(\\mathcal{X})$$`}</Latex>
+                <Latex>{`$$\\min_{\\theta} \\frac{1}{n} \\sum_{i=1}^{n} w_i \\mathcal{L}(f(x_i; \\theta), y_i)$$`}</Latex>
+              </Box>
+              <Box textAlign="center">
+                <Text fontSize="xl" fontWeight="bold" mb={2}>Coreset reWeighted-ERM (CW-ERM)</Text>
+                <Latex>{`$$C \\leftarrow \\text{ModerateCoreset}(\\mathcal{X})$$`}</Latex>
+                <Latex>{`$$w^C = \\text{DataReweighting}(C)$$`}</Latex>
+                <Latex>{`$$w_i^* = \\text{broadcast}(x_i, C, w^C) = w^C_{NN}(x_i, C)$$`}</Latex>
+                <Latex>{`$$\\min_{\\theta} \\frac{1}{n} \\sum_{i=1}^{n} w_i^* \\mathcal{L}(f(x_i; \\theta), y_i)$$`}</Latex>
+              </Box>
+              <Box mt={4} textAlign="center">
+                <Latex>{`Dataset $\\mathcal{X}$ with pairs $(x_i, y_i)$, model parameters $\\theta$, backbone function $f$, loss function $\\mathcal{L}$, representative coreset $C$, reweighted full dataset weights $w$, coreset weights $w^C$, and broadcasted weights $w_i^*$.`}</Latex>
+              </Box>
+            </VStack>
+          </Box>
+
+          <FadingSeparator/>
              <CenteredTitle title='Experimental Results'/>
              <Image
               rounded={'lg'}
@@ -169,8 +225,8 @@ const App: React.FC = () => {
               alt={'results'}
               />
              <FadingSeparator/>
-             <CenteredTitle title='RIML Lab'/>
-             <AvatarGroup size='md' max={4} mb={10}>
+             <CenteredTitle title='OPTML'/>
+             {/* <AvatarGroup size='md' max={4} mb={10}>
               <Avatar name='Hossein Mirzaei' src='people/01.jpg' />
               <Avatar name='Mohammad Jafari' src='people/02.jpg' />
               <Avatar name='Hamidreza Dehbashi' src='people/03.jpg' />
@@ -181,7 +237,7 @@ const App: React.FC = () => {
               <Avatar name='Mohammad Azizmalayeri' src='https://bit.ly/code-beast' />
               <Avatar name='Mahdieh Soleymani Baghshah' src='https://bit.ly/code-beast' />
               <Avatar name='Mohammad Hossein Rohban' src='https://bit.ly/code-beast' />
-            </AvatarGroup>
+            </AvatarGroup> */}
             <Box textAlign="center" mb={8}>
               <Text fontSize="sm">
                 Designed by Mohammad Jafari. All rights reserved.
