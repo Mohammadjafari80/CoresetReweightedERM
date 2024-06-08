@@ -149,7 +149,7 @@ const App: React.FC = () => {
             </VStack>
           </ScientificParagraph>
           <FadingSeparator/>
-          <CenteredTitle title='Method'/>
+          <CenteredTitle title='Methodology'/>
           <Image
               rounded={'lg'}
               // height={'100%'}  // Set the height to be 100% of the inner Flex
@@ -193,16 +193,16 @@ const App: React.FC = () => {
           <Box p={4} borderRadius="md" width="70%">
             <VStack spacing={6} align="center">
               <Box textAlign="center">
-                <Text fontSize="xl" fontWeight="bold" mb={2}>ERM</Text>
+                <Text fontSize="xl" fontWeight="bold" fontFamily="Times New Roman" mb={2}>ERM</Text>
                 <Latex>{`$$\\min_{\\theta} \\frac{1}{n} \\sum_{i=1}^{n} \\mathcal{L}(f(x_i; \\theta), y_i)$$`}</Latex>
               </Box>
               <Box textAlign="center">
-                <Text fontSize="xl" fontWeight="bold" mb={2}>Weighted-ERM (W-ERM)</Text>
+                <Text fontSize="xl" fontWeight="bold" fontFamily="Times New Roman" mb={2}>Weighted-ERM (W-ERM)</Text>
                 <Latex >{`$$w = \\text{DataReweighting}(\\mathcal{X})$$`}</Latex>
                 <Latex>{`$$\\min_{\\theta} \\frac{1}{n} \\sum_{i=1}^{n} w_i \\mathcal{L}(f(x_i; \\theta), y_i)$$`}</Latex>
               </Box>
               <Box textAlign="center">
-                <Text fontSize="xl" fontWeight="bold" mb={2}>Coreset reWeighted-ERM (CW-ERM)</Text>
+                <Text fontSize="xl" fontWeight="bold" fontFamily="Times New Roman" mb={2}>Coreset reWeighted-ERM (CW-ERM)</Text>
                 <Latex>{`$$C \\leftarrow \\text{ModerateCoreset}(\\mathcal{X})$$`}</Latex>
                 <Latex>{`$$w^C = \\text{DataReweighting}(C)$$`}</Latex>
                 <Latex>{`$$w_i^* = \\text{broadcast}(x_i, C, w^C) = w^C_{NN}(x_i, C)$$`}</Latex>
