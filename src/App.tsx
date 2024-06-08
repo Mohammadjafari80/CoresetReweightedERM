@@ -31,6 +31,7 @@ const affiliations = [
   {name: "Sharif University of Technology", index: "1"},
   {name: "Michigan State University", index: "2"}
 ]
+
 const App: React.FC = () => {
   return (
     <Flex mt={10} justify="center" minHeight="100vh" width="100%"> {/* Ensures that the content is centered in the viewport */}
@@ -177,7 +178,7 @@ const App: React.FC = () => {
                 </ListItem>
                 <ListItem>
                   <Text fontSize="xl" fontFamily="Times New Roman" css={{ textAlign: 'justify' }}>
-                    {'\u2781 (Efficiency-wise)'} We unveil that less than $1\%$ of the dataset is sufficient for effective reweighting, dramatically increasing the efficiency of the process.
+                    {'\u2781 (Efficiency-wise)'} We unveil that less than <Latex>$1\%$</Latex> of the dataset is sufficient for effective reweighting, dramatically increasing the efficiency of the process.
                   </Text>
                 </ListItem>
                 <ListItem>
